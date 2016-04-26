@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ZeroCourse</string>
+    <string name="drawer_open">菜单</string>
+    <string name="drawer_close">首页</string>
 </resources>
