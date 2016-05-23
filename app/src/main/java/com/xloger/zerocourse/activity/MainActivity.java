@@ -1,5 +1,6 @@
 package com.xloger.zerocourse.activity;
 
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -68,7 +69,8 @@ public class MainActivity extends BaseActivity {
                 switch (item.getItemId()){
                     case R.id.menu_home:
                         break;
-                    case R.id.menu_message:
+                    case R.id.menu_bbs:
+
                         break;
                 }
                 item.setChecked(true);
