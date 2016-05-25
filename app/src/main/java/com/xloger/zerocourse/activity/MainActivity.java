@@ -2,6 +2,8 @@ package com.xloger.zerocourse.activity;
 
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.xloger.zerocourse.R;
+import com.xloger.zerocourse.fragment.CourseFragment;
 
 
 public class MainActivity extends BaseActivity {
@@ -27,6 +30,10 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         initView();
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.main,new CourseFragment());
+        transaction.commit();
     }
 
     private void initView(){
@@ -68,6 +75,7 @@ public class MainActivity extends BaseActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.menu_home:
+
                         break;
                     case R.id.menu_bbs:
 
