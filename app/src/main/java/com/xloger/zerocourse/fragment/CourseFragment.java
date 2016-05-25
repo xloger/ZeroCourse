@@ -10,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.xloger.zerocourse.R;
 import com.xloger.zerocourse.adapter.ClassAdapter;
 import com.xloger.zerocourse.entity.Class;
 import com.xloger.zerocourse.sql.TimeTableManager;
 import com.xloger.zerocourse.tool.ClassTool;
+import com.xloger.zerocourse.tool.Config;
 
 import java.util.List;
 
@@ -33,6 +35,7 @@ public class CourseFragment extends BaseFragment {
     public View initView(LayoutInflater inflater) {
         View view = inflater.inflate(R.layout.fragment_course, null);
         RecyclerView gridView= (RecyclerView) view.findViewById(R.id.course_grid_view);
+        TextView dateText= (TextView) view.findViewById(R.id.course_date);
 
         GridLayoutManager gridLayoutManager=new GridLayoutManager(getContext(),7);
         gridView.setLayoutManager(gridLayoutManager);
@@ -42,6 +45,8 @@ public class CourseFragment extends BaseFragment {
         classList= ClassTool.sortList(classList);
         ClassAdapter classAdapter=new ClassAdapter(getContext(),classList,null);
         gridView.setAdapter(classAdapter);
+
+        dateText.setText("当前第"+ClassTool.getNowWeek()+"周");
 
         return view;
     }

@@ -53,6 +53,14 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassViewHol
                     dialog.show();
                 }
             });
+
+            if (!ClassTool.isStudy(cl)){
+                int temp=context.getResources().getIdentifier("unStudy", "color", context.getPackageName());
+                int unStudyColor=ContextCompat.getColor(context,temp);
+                holder.layout.setBackgroundColor(unStudyColor);
+                holder.place.setText("上课时间："+cl.getLength()+"周");
+                holder.place.setTextSize(12);
+            }
         }
     }
 

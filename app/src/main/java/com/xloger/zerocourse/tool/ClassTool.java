@@ -2,6 +2,7 @@ package com.xloger.zerocourse.tool;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+import android.text.format.Time;
 import android.util.Log;
 
 import com.xloger.zerocourse.entity.Class;
@@ -74,5 +75,43 @@ public class ClassTool {
         int hash=cl.getName().hashCode();
         int temp=(Math.abs(hash))%(color.length);
         return color[temp];
+    }
+
+    public static int getNowWeek(){
+        int nowWeek;
+        String begin_date = Config.newInstance().getConfig("begin_date");
+        if (begin_date == null) {
+            Config.newInstance().setConfig("begin_date","20160304");
+            begin_date="20160304";
+        }
+
+        Time begintime=new Time();
+        begintime.parse(begin_date);
+        Time nowtime=new Time();
+        nowtime.setToNow();
+        if(nowtime.year==begintime.year){
+            nowWeek=nowtime.getWeekNumber()-begintime.getWeekNumber();
+        }else{
+            Time yearendtime=new Time();
+            yearendtime.parse(begintime.year+"1231");
+            nowWeek=yearendtime.getWeekNumber()-begintime.getWeekNumber()+nowtime.getWeekNumber();
+        }
+
+        return nowWeek;
+    }
+
+    public static boolean isStudy(Class cl){
+        int nowWeek=getNowWeek();
+        String[] s=cl.getLength().split("-");
+        if(s.length==2){
+            int beginWeek=Integer.parseInt(s[0]);
+            int endWeek=Integer.parseInt(s[1]);
+            if(nowWeek>=beginWeek&&nowWeek<=endWeek){
+                return true;
+            }
+        }else{
+            Log.e("show", "解析classWeek长度出错");
+        }
+        return false;
     }
 }
