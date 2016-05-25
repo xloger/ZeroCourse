@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.xloger.zerocourse.R;
 import com.xloger.zerocourse.entity.Class;
+import com.xloger.zerocourse.tool.ClassTool;
 
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassViewHol
         if (cl != null) {
             holder.name.setText(cl.getName());
             holder.place.setText(cl.getPlace());
-            holder.layout.setBackgroundColor(ContextCompat.getColor(context,R.color.colorPrimary));
+            holder.layout.setBackgroundColor(ClassTool.getClassColor(context,cl));
         }
     }
 

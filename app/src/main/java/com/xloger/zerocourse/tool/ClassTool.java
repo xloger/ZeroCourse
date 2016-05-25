@@ -1,5 +1,7 @@
 package com.xloger.zerocourse.tool;
 
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.xloger.zerocourse.entity.Class;
@@ -50,5 +52,27 @@ public class ClassTool {
             classList.set(pointer,cl);
         }
         return classList;
+    }
+
+    /**
+     * 加载预设的Color列表
+     */
+    private static int[] initClassColor(Context context){
+        int color[]=new int[10];
+        for(int i=0;i<color.length;i++){
+            int temp=context.getResources().getIdentifier("class"+(i+1), "color", context.getPackageName());
+            color[i]= ContextCompat.getColor(context,temp);
+        }
+        return color;
+    }
+    /**
+     * 随机配置背景颜色
+     * TODO 算法待优化
+     */
+    public static int getClassColor(Context context,Class cl){
+        int color[]=initClassColor(context);
+        int hash=cl.getName().hashCode();
+        int temp=(Math.abs(hash))%(color.length);
+        return color[temp];
     }
 }
