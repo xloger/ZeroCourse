@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/text_white"
+    android:layout_gravity="center"
+    android:layout_margin="30dp"
+    android:padding="20dp"
+    android:columnCount="2"
+    >
+
+    <TextView
+        android:id="@+id/details_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="2"
+        android:layout_marginBottom="5dp"
+        android:textSize="22sp"
+        android:text="课程名"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DetailsText"
+        android:text="上课地点:"
+        />
+
+    <TextView
+        android:id="@+id/details_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DetailsText"
+        android:text="地点"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DetailsText"
+        android:text="任教老师:"
+        />
+
+    <TextView
+        android:id="@+id/details_teacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DetailsText"
+        android:text="老师"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DetailsText"
+        android:text="上课时间:"
+        />
+
+    <TextView
+        android:id="@+id/details_length"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DetailsText"
+        android:text="XX周"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DetailsText"
+        android:text="其他班级:"
+        />
+
+    <TextView
+        android:id="@+id/details_friend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DetailsText"
+        android:text="其他班"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DetailsText"
+        android:text="单双周:"
+        />
+
+    <TextView
+        android:id="@+id/details_dan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DetailsText"
+        android:text="单周"
+        />
+</GridLayout>

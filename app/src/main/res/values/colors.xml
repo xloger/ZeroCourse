@@ -6,6 +6,7 @@
 
     <color name="text_white">#FFF</color>
     <color name="text_grey">#d7dee2</color>
+    <color name="transparent">#00000000</color>
 
     <!-- 课表的预设颜色  -->
     <color name="class1">#CC3333</color>
