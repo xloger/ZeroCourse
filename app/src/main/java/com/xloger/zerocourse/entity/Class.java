@@ -11,6 +11,8 @@ public class Class {
     private int week;
     //当天第几节的课
     private int park;
+    //课程的长度
+    private int size;
     //课程的名称
     private String name;
     //上课地点
@@ -28,15 +30,28 @@ public class Class {
 
     }
 
-    public Class( int week, int park, String name, String place, String teacher, String length, String friend, int isDan) {
+    public Class( int week, int park,int size, String name, String place, String teacher, String length, String friend, int isDan) {
         this.week = week;
         this.park = park;
+        this.size = size;
         this.name = name;
         this.place = place;
         this.teacher = teacher;
         this.length = length;
         this.friend = friend;
         this.isDan = isDan;
+    }
+
+    public Class(int week, int park, int size, String name, String place, String teacher) {
+        this.week = week;
+        this.park = park;
+        this.size = size;
+        this.name = name;
+        this.place = place;
+        this.teacher = teacher;
+        this.length="01-18";
+        this.friend="";
+        this.isDan=0;
     }
 
     public int getID() {
@@ -109,5 +124,13 @@ public class Class {
 
     public void setIsDan(int isDan) {
         this.isDan = isDan;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }

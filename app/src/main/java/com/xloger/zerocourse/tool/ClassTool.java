@@ -55,6 +55,10 @@ public class ClassTool {
         return classList;
     }
 
+    public static void addClasses(){
+
+    }
+
     /**
      * 加载预设的Color列表
      */
@@ -82,7 +86,7 @@ public class ClassTool {
         String begin_date = Config.newInstance().getConfig("begin_date");
         if (begin_date == null) {
             Config.newInstance().setConfig("begin_date","20160304");
-            begin_date="20160304";
+            begin_date="20170220";
         }
 
         Time begintime=new Time();

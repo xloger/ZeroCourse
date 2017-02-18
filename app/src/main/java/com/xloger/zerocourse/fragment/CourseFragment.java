@@ -4,6 +4,7 @@ package com.xloger.zerocourse.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,14 +38,21 @@ public class CourseFragment extends BaseFragment {
         RecyclerView gridView= (RecyclerView) view.findViewById(R.id.course_grid_view);
         TextView dateText= (TextView) view.findViewById(R.id.course_date);
 
-        GridLayoutManager gridLayoutManager=new GridLayoutManager(getContext(),7);
+        GridLayoutManager gridLayoutManager=new GridLayoutManager(getContext(),9,LinearLayoutManager.HORIZONTAL,false);
         gridView.setLayoutManager(gridLayoutManager);
 
         TimeTableManager timeTableManager=new TimeTableManager(getContext());
-        List<Class> classList= timeTableManager.getAllClass(null);
-        classList= ClassTool.sortList(classList);
+        final List<Class> classList= timeTableManager.getAllClass(null);
+//        classList= ClassTool.sortList(classList);
         ClassAdapter classAdapter=new ClassAdapter(getContext(),classList,null);
         gridView.setAdapter(classAdapter);
+
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return classList.get(position).getSize();
+            }
+        });
 
         dateText.setText("当前第"+ClassTool.getNowWeek()+"周");
 

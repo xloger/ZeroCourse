@@ -21,6 +21,7 @@ public class DBHelper extends SQLiteOpenHelper {
 				"(id INTEGER PRIMARY KEY,"+
 				"week INTEGER,"+
 				"park INTEGER,"+
+				"size INTEGER,"+
 				"name VARCHAR,"+
 				"place VARCHAR,"+
 				"teacher VARCHAR,"+
