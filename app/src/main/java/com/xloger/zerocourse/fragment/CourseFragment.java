@@ -42,8 +42,8 @@ public class CourseFragment extends BaseFragment {
         gridView.setLayoutManager(gridLayoutManager);
 
         TimeTableManager timeTableManager=new TimeTableManager(getContext());
-        final List<Class> classList= timeTableManager.getAllClass(null);
-//        classList= ClassTool.sortList(classList);
+        List<Class> primaryList= timeTableManager.getAllClass(null);
+        final List<Class> classList= ClassTool.addClasses(primaryList);
         ClassAdapter classAdapter=new ClassAdapter(getContext(),classList,null);
         gridView.setAdapter(classAdapter);
 

@@ -55,8 +55,54 @@ public class ClassTool {
         return classList;
     }
 
-    public static void addClasses(){
+    /**
+     * 真正Clear的实现，上面的果然都是傻逼
+     */
+    public static List<Class> addClasses(List<Class> classes){
+        List<Class> classList=new ArrayList<>();
+        Class lastClass=null;
+        for (int i = 0; i < classes.size(); i++) {
+            Class iClass=classes.get(i);
+            //判断早上第一节课前是否有空白
+            if (lastClass==null||iClass.getWeek()>lastClass.getWeek()){
+                if (iClass.getPark()!=1){
+                    Class temp=new Class();
+                    temp.setWeek(iClass.getWeek());
+                    temp.setPark(1);
+                    temp.setSize(iClass.getPark()-temp.getPark());
+                    temp.setName(null);
+                    classList.add(temp);
+                }
+            }
 
+            if (lastClass!=null){
+                if (iClass.getWeek()==lastClass.getWeek()){
+                    if (iClass.getPark()>(lastClass.getPark()+lastClass.getSize())){
+                        Class temp=new Class();
+                        temp.setWeek(iClass.getWeek());
+                        temp.setPark(lastClass.getPark()+lastClass.getSize());
+                        temp.setSize(iClass.getPark()-temp.getPark());
+                        temp.setName(null);
+                        classList.add(temp);
+                    }
+                }else {
+                    if (lastClass.getPark()!=9){
+                        Class temp=new Class();
+                        temp.setWeek(lastClass.getWeek());
+                        temp.setPark(lastClass.getPark()+lastClass.getSize());
+                        temp.setSize(9-temp.getPark());
+                        temp.setName(null);
+                        classList.add(temp);
+                    }
+                }
+            }
+
+            classList.add(iClass);
+
+            lastClass=iClass;
+        }
+
+        return classList;
     }
 
     /**
@@ -85,8 +131,8 @@ public class ClassTool {
         int nowWeek;
         String begin_date = Config.newInstance().getConfig("begin_date");
         if (begin_date == null) {
-            Config.newInstance().setConfig("begin_date","20160304");
-            begin_date="20170220";
+            Config.newInstance().setConfig("begin_date","20170213");
+            begin_date="20170213";
         }
 
         Time begintime=new Time();

@@ -21,7 +21,7 @@ import java.util.List;
  * Created on 16/5/24 下午1:51.
  * Author: xloger
  */
-public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassViewHolder> {
+public class ClassAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private List<Class> classList;
     private ClassCallBack callBack;
@@ -33,14 +33,24 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassViewHol
     }
 
     @Override
-    public ClassViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context).inflate(R.layout.item_class,parent,false);
-        ClassViewHolder viewHolder=new ClassViewHolder(view);
-        return viewHolder;
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (viewType==1){
+            View view= LayoutInflater.from(context).inflate(R.layout.item_class,parent,false);
+            ClassViewHolder viewHolder=new ClassViewHolder(view);
+            return viewHolder;
+        }else {
+            View view= LayoutInflater.from(context).inflate(R.layout.item_null,parent,false);
+            NullViewHolder viewHolder=new NullViewHolder(view);
+            return viewHolder;
+        }
     }
 
     @Override
-    public void onBindViewHolder(ClassViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder h, int position) {
+        if (h instanceof NullViewHolder){
+            return;
+        }
+        ClassViewHolder holder=(ClassViewHolder) h;
         final Class cl=classList.get(position);
         if (cl != null) {
             holder.name.setText(cl.getName());
@@ -81,6 +91,24 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassViewHol
             place= (TextView) itemView.findViewById(R.id.class_place);
         }
     }
+
+    public class NullViewHolder extends RecyclerView.ViewHolder{
+
+        public NullViewHolder(View itemView) {
+            super(itemView);
+        }
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        if (classList.get(position).getName()==null){
+            return 0;
+        }else {
+            return 1;
+        }
+    }
+
 
     public interface ClassCallBack{
         void onClick();
