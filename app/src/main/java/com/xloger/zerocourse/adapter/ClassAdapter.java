@@ -55,7 +55,7 @@ public class ClassAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         if (cl != null) {
             holder.name.setText(cl.getName());
             holder.place.setText(cl.getPlace());
-            holder.layout.setBackgroundColor(ClassTool.getClassColor(context,cl));
+            holder.layout.setBackgroundColor(ClassTool.getClassColor(cl));
             holder.layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

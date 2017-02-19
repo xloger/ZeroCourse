@@ -54,7 +54,7 @@ public class ClassDetailsDialog extends Dialog {
     }
 
     private void initColor(){
-        int color= ClassTool.getClassColor(context,cl);
+        int color= ClassTool.getClassColor(cl);
         title.setTextColor(color);
         place.setTextColor(color);
         teacher.setTextColor(color);

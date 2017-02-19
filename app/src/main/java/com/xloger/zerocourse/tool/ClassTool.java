@@ -1,6 +1,8 @@
 package com.xloger.zerocourse.tool;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.text.format.Time;
 import android.util.Log;
@@ -8,7 +10,12 @@ import android.util.Log;
 import com.xloger.zerocourse.entity.Class;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created on 16/5/24 下午4:35.
@@ -108,7 +115,7 @@ public class ClassTool {
     /**
      * 加载预设的Color列表
      */
-    private static int[] initClassColor(Context context){
+    private static int[] getColorRes(Context context){
         int color[]=new int[10];
         for(int i=0;i<color.length;i++){
             int temp=context.getResources().getIdentifier("class"+(i+1), "color", context.getPackageName());
@@ -116,15 +123,32 @@ public class ClassTool {
         }
         return color;
     }
+
+    private static Map<String,Integer> colorMap=null;
+
+    public static void initClassColor(Context context,List<Class> classList){
+        int color[]= getColorRes(context);
+        Set<String> md5Set=new HashSet<>();
+        for (int i = 0; i < classList.size(); i++) {
+            Class iClass=classList.get(i);
+            md5Set.add(iClass.getName().replaceAll("实验",""));
+        }
+        String[] md5List=md5Set.toArray(new String[md5Set.size()]);
+
+        colorMap=new Hashtable<>();
+        for (int i = 0; i < md5List.length; i++) {
+            colorMap.put(md5List[i],color[i]);
+        }
+    }
+
     /**
      * 随机配置背景颜色
-     * TODO 算法待优化
      */
-    public static int getClassColor(Context context,Class cl){
-        int color[]=initClassColor(context);
-        int hash=cl.getName().hashCode();
-        int temp=(Math.abs(hash))%(color.length);
-        return color[temp];
+    public static int getClassColor(Class cl){
+        if (colorMap==null){
+            return Color.BLUE;
+        }
+        return colorMap.get(cl.getName().replaceAll("实验",""));
     }
 
     public static int getNowWeek(){
