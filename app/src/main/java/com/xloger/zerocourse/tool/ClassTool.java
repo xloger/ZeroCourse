@@ -155,8 +155,8 @@ public class ClassTool {
         int nowWeek;
         String begin_date = Config.newInstance().getConfig("begin_date");
         if (begin_date == null) {
-            Config.newInstance().setConfig("begin_date","20170213");
-            begin_date="20170213";
+            Config.newInstance().setConfig("begin_date","20170220");
+            begin_date="20170220";
         }
 
         Time begintime=new Time();

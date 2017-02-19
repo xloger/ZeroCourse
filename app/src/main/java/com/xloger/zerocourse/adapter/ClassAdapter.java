@@ -1,6 +1,8 @@
 package com.xloger.zerocourse.adapter;
 
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -60,6 +62,7 @@ public class ClassAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     ClassDetailsDialog dialog=new ClassDetailsDialog(context,cl);
+//                    dialog.setCanceledOnTouchOutside(true);
                     dialog.show();
                 }
             });

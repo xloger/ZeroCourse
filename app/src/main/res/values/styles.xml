@@ -10,11 +10,13 @@
     </style>
 
     <style name="ClassDetailsDialog" parent="@android:style/Theme.Dialog">
-        <item name="android:windowIsFloating">false</item>
+        <!--下面这个会导致点击Dialog失效，我困了下次再研究...-->
+        <!--<item name="android:windowIsFloating">false</item>-->
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowNoTitle">true</item> <!--是否启用标题栏-->
         <item name="android:windowBackground">@color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item> <!--是否使用背景半透明-->
+        <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
 
     <style name="DetailsText">

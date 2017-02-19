@@ -2,6 +2,7 @@
 <GridLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:minWidth="300dp"
     android:layout_height="wrap_content"
     android:background="@color/text_white"
     android:layout_gravity="center"
@@ -21,6 +22,7 @@
         />
 
     <TextView
+        android:id="@+id/details_place_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/DetailsText"
@@ -36,6 +38,7 @@
         />
 
     <TextView
+        android:id="@+id/details_teacher_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/DetailsText"
@@ -51,6 +54,7 @@
         />
 
     <TextView
+        android:id="@+id/details_length_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/DetailsText"
@@ -66,6 +70,7 @@
         />
 
     <TextView
+        android:id="@+id/details_friend_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/DetailsText"
@@ -81,6 +86,7 @@
         />
 
     <TextView
+        android:id="@+id/details_dan_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/DetailsText"

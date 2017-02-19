@@ -3,6 +3,7 @@ package com.xloger.zerocourse.view;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.xloger.zerocourse.R;
@@ -22,6 +23,11 @@ public class ClassDetailsDialog extends Dialog {
     private TextView length;
     private TextView friend;
     private TextView dan;
+    private TextView placeTip;
+    private TextView teacherTip;
+    private TextView lengthTip;
+    private TextView friendTip;
+    private TextView danTip;
 
     public ClassDetailsDialog(Context context,Class cl) {
         super(context, R.style.ClassDetailsDialog);
@@ -36,12 +42,26 @@ public class ClassDetailsDialog extends Dialog {
         initView();
         initColor();
 
+//        setCanceledOnTouchOutside(true);
+//        setCancelable(true);
+
         title.setText(cl.getName());
         place.setText(cl.getPlace());
         teacher.setText(cl.getTeacher());
         length.setText(cl.getLength());
-        friend.setText(cl.getFriend());
-        dan.setText(cl.getIsDan()+"");
+        if (!cl.getFriend().equals("")){
+            friend.setText(cl.getFriend());
+        }else {
+            friend.setVisibility(View.GONE);
+            friendTip.setVisibility(View.GONE);
+        }
+
+        if (cl.getIsDan()!=0){
+            dan.setText(cl.getIsDan()+"");
+        }else {
+            dan.setVisibility(View.GONE);
+            danTip.setVisibility(View.GONE);
+        }
     }
 
     private void initView(){
@@ -51,6 +71,11 @@ public class ClassDetailsDialog extends Dialog {
         length = (TextView) findViewById(R.id.details_length);
         friend = (TextView) findViewById(R.id.details_friend);
         dan = (TextView) findViewById(R.id.details_dan);
+        placeTip = (TextView) findViewById(R.id.details_place_tip);
+        teacherTip = (TextView) findViewById(R.id.details_teacher_tip);
+        lengthTip = (TextView) findViewById(R.id.details_length_tip);
+        friendTip = (TextView) findViewById(R.id.details_friend_tip);
+        danTip = (TextView) findViewById(R.id.details_dan_tip);
     }
 
     private void initColor(){
