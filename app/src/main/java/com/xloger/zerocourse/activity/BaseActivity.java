@@ -19,18 +19,20 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base);
+        rootLayout= (LinearLayout) findViewById(R.id.root_layout);
+
 
         // 经测试在代码里直接声明透明状态栏更有效
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
-            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
-            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
-                //将侧边栏顶部延伸至status bar
-                rootLayout.setFitsSystemWindows(true);
-                //将主页面顶部延伸至status bar;虽默认为false,但经测试,DrawerLayout需显示设置
-                rootLayout.setClipToPadding(false);
-            }
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+//            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+//            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
+//                //将侧边栏顶部延伸至status bar
+//                rootLayout.setFitsSystemWindows(true);
+//                //将主页面顶部延伸至status bar;虽默认为false,但经测试,DrawerLayout需显示设置
+//                rootLayout.setClipToPadding(false);
+//            }
+//        }
         initToolbar();
 
     }
