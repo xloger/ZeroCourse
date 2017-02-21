@@ -1,29 +1,23 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        sign {
-            keyAlias 'xloger'
-            keyPassword KeyPassword
-            storeFile file('D:/OneDrive/00加密/Git/XlogerAndroid.jks')
-            storePassword StorePassword
-        }
-    }
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    buildToolsVersion ProjectBuildTools
+    signingConfigs {
+        release {}
+    }
     defaultConfig {
         applicationId "com.xloger.zerocourse"
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-        signingConfig signingConfigs.sign
     }
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.sign
+            signingConfig signingConfigs.release
         }
     }
     productFlavors {
@@ -40,3 +34,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.0.1'
     compile 'com.android.support:design:25.0.1'
 }
+
+apply from: '../gradle-android-signing.gradle'
