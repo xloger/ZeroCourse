@@ -20,10 +20,10 @@ android {
             signingConfig signingConfigs.release
         }
     }
-    productFlavors {
-        config {
-        }
-    }
+//    productFlavors {
+//        config {
+//        }
+//    }
 }
 
 dependencies {
